@@ -27,6 +27,7 @@ public class Main {
             System.out.println("Должны быть введени числа");
         }
         if(Tester.isRangeThru(objects)) throw new  CustomExceptions("Неверно заданный диапазон");
+        if(Tester.isTooBig(objects)) throw new Exception("Неверно заданный диапазон");
 
         if(Tester.isPositive(objects[0])) throw new CustomExceptions("Число "+objects[0]+" должно быть положительным");
 
@@ -59,6 +60,16 @@ public class Main {
             int i = Integer.parseInt(objects[0]);
             int j = Integer.parseInt(objects[1]);
             return i > j;
+        }
+
+        public static boolean isTooBig (String[] arr) {
+            for (String obj : arr) {
+                int number = Integer.parseInt(obj);
+                if (number > 1000000) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static boolean isPositive (String obj){
